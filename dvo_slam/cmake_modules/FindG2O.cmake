@@ -9,6 +9,7 @@ FIND_PATH(G2O_INCLUDE_DIR g2o/core/base_vertex.h
   /opt/local/include
   /sw/local/include
   /sw/include
+  /opt/ros/kinetic/include # temp hack
   NO_DEFAULT_PATH
   )
 
@@ -41,7 +42,7 @@ MACRO(FIND_G2O_LIBRARY MYLIBRARY MYLIBRARYNAME)
     /sw/local/lib
     /sw/lib
     )
-  
+
   FIND_LIBRARY(${MYLIBRARY}
     NAMES "g2o_${MYLIBRARYNAME}"
     PATHS
@@ -64,14 +65,15 @@ MACRO(FIND_G2O_LIBRARY MYLIBRARY MYLIBRARYNAME)
     /opt/local/lib
     /sw/local/lib
     /sw/lib
+    /opt/ros/kinetic/lib/ # temp hack
     )
-  
+
   IF(NOT ${MYLIBRARY}_DEBUG)
     IF(MYLIBRARY)
       SET(${MYLIBRARY}_DEBUG ${MYLIBRARY})
     ENDIF(MYLIBRARY)
   ENDIF( NOT ${MYLIBRARY}_DEBUG)
-  
+
 ENDMACRO(FIND_G2O_LIBRARY LIBRARY LIBRARYNAME)
 
 # Find the core elements
